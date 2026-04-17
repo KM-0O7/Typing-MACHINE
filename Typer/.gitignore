@@ -1,1 +1,23 @@
+# Eclipse files
+/.classpath
+/.project
+/.settings/
 /bin/
+
+# Java class files
+/*.class
+
+# Maven/Gradle build folders
+target/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
+
+
+*.jar
+!Typing-MACHINE.jar
+
+!run.bat
+!javafx-sdk-26/
