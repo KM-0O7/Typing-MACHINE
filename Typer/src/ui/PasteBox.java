@@ -86,6 +86,7 @@ public class PasteBox extends Application {
         			    
         			    if (typo == true) {
         			    	char randomChar;
+        			    	
         			    	int choice = waitTime.nextInt(3);
 
         			    	if (choice == 0) {
@@ -95,8 +96,9 @@ public class PasteBox extends Application {
         			    	} else {
         			    	    randomChar = (char) ('0' + waitTime.nextInt(10));
         			    	}
-        			    	 typer.keyPress(randomChar);
-          			    	 typer.keyRelease(randomChar);
+        			    	int randomKeyCode = KeyEvent.getExtendedKeyCodeForChar(randomChar);
+        			    	typer.keyPress(randomKeyCode);
+          			    	typer.keyRelease(randomKeyCode);
         			    	delay = Math.min(delay, 60000);
         			    	typer.delay(waitTime.nextInt(1500));
         			    	typer.keyPress(KeyEvent.VK_BACK_SPACE);
