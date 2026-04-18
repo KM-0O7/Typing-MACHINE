@@ -20,7 +20,7 @@ public class PasteBox extends Application {
 	public static volatile boolean stopTyping = false;
     public static String textToType;
     
-    public void start(Stage stage) {
+    public void start(Stage stage) throws InterruptedException {
     	Random waitTime = new Random();
     	
     	//MAIN FUNCTION
@@ -49,6 +49,7 @@ public class PasteBox extends Application {
     		textToType = text.getText();
     		text.clear();
     		System.out.println(textToType);
+    		thread.sleep(3000);
     		new Thread(() -> {
     			try {
         			Robot typer = new Robot();
@@ -110,8 +111,20 @@ public class PasteBox extends Application {
         			    	delay = Math.min(delay, 60000);
         			    	 typer.delay(delay);
         			    	   try {
+        			    		 boolean upperCase = Character.isUpperCase(c);
+        			    		 boolean shiftNeeded = upperCase || "~!@#$%^&*()_+{}|:\"<>?".indexOf(c) >= 0;
+
+        			    		 if (shiftNeeded) {
+        			    		        robot.keyPress(KeyEvent.VK_SHIFT);
+        			    		 }
               			    	 typer.keyPress(keyCode);
               			    	 typer.keyRelease(keyCode);
+              			    	 typer.delay(10);
+              			    	 
+              			    	 if (shiftNeeded) {
+              			         robot.keyRelease(KeyEvent.VK_SHIFT);
+              			    	 }
+              			    	 
               			    } catch (IllegalArgumentException e3) {
               			    	 continue;
               			    }
