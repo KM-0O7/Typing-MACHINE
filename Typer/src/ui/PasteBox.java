@@ -111,8 +111,8 @@ public class PasteBox extends Application {
         			    	delay = Math.min(delay, 60000);
         			    	 typer.delay(delay);
         			    	   try {
-        			    		 boolean upperCase = Character.isUpperCase(c);
-        			    		 boolean shiftNeeded = upperCase || "~!@#$%^&*()_+{}|:\"<>?".indexOf(c) >= 0;
+        			    		 boolean upperCase = Character.isUpperCase(textToType.charAt(i));
+        			    		 boolean shiftNeeded = upperCase || "~!@#$%^&*()_+{}|:\"<>?".indexOf(textToType.charAt(i)) >= 0;
 
         			    		 if (shiftNeeded) {
         			    		        robot.keyPress(KeyEvent.VK_SHIFT);
